@@ -1,0 +1,33 @@
+﻿@model WebBlogMvc5.Models.ListPost
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />@Model.ListBlogsPost.Count() articles disponible sur votre blog.<br />
+<div id="articleContainer">
+
+    @foreach (WebBlogMvc5.Models.BlogPostModel m in Model.ListBlogsPost)
+    {
+
+        <article style="border:solid 1px #dad7d7; margin-bottom:10px; padding:5px;">
+            <header>
+                <h3>@m.Titre</h3>
+            </header>
+
+            <p> @m.Libelle</p>
+            <footer>
+                @m.DatePublication
+                @Html.ActionLink("Details", "Details", new { id = @m.Id })
+            </footer>
+
+        </article>
+        <br style="clear:both" />
+    }
+
+
+</div>
+
+@*@section Scripts {
+        <script src="~/Scripts/Site.js"></script>
+    }*@

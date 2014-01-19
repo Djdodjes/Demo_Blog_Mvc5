@@ -1,0 +1,64 @@
+﻿@model WebBlogMvc5.Models.BlogPostModel
+
+
+<h2>Ajouter un nouvel article</h2>
+
+@using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true) 
+         
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titre, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Titre, new { id = "txtTitre" })
+                @Html.ValidationMessageFor(model => model.Titre)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DatePublication, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DatePublication)
+                @Html.ValidationMessageFor(model => model.DatePublication)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Libelle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Libelle)
+                @Html.ValidationMessageFor(model => model.Libelle)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Commentaire, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Commentaire)
+                @Html.ValidationMessageFor(model => model.Commentaire)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="créer un article" class="btn btn-default" />
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="btnAddArticle" value="créer un article (html5)" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/admin.js"></script>
+}
